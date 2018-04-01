@@ -17,7 +17,15 @@ namespace WahChat
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        //Здесь перейдём на форму авторизации
+        private void connect_Click(object sender, EventArgs e)
+        {
+            Authorization authForm = new Authorization();
+            authForm.Show();
+            this.Hide();
+        }
+
+        private void Setup_Load(object sender, EventArgs e)
         {
 
         }
