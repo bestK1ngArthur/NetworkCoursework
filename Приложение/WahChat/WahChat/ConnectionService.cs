@@ -31,18 +31,14 @@ namespace WahChat
             Downlink
         }
 
-        private byte startByte = 0xFF;
-        private byte endByte = 0xFE;
-
-        private SerialPort incomePort;
-        private SerialPort outcomePort;
+        private Connection currentConnection;
 
         /// <summary>
         /// Создание соединения соединения
         /// </summary>
         public void CreateConnection(string incomePortName, string outcomePortName)
         {
-            bool portsIsOpened = OpenPorts(incomePortName, outcomePortName);
+            this.currentConnection = new Connection(incomePortName, outcomePortName);
 
             // формирование LINK кадра..
             // отправка LINK кадра..
@@ -63,34 +59,6 @@ namespace WahChat
         public void HandleFrame()
         {
             // ..
-        }
-
-        /// <summary>
-        /// Открытие портов
-        /// </summary>
-        private bool OpenPorts(string incomePortName, string outcomePortName)
-        {
-            // Создаем объекты портов.
-            this.incomePort = new SerialPort(incomePortName);
-            this.outcomePort = new SerialPort(outcomePortName);
-
-            // Открываем порты.
-            this.incomePort.Open();
-            this.outcomePort.Open();
-
-            return (this.incomePort.IsOpen && this.outcomePort.IsOpen);
-        }
-
-        /// <summary>
-        /// Закрытие портов
-        /// </summary>
-        private bool ClosePorts()
-        {
-            // Закрываем порты.
-            this.incomePort.Close();
-            this.outcomePort.Close();
-
-            return (this.incomePort.IsOpen && this.outcomePort.IsOpen);
         }
     }
 }
