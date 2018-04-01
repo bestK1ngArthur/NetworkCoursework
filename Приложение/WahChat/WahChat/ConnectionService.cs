@@ -11,26 +11,6 @@ namespace WahChat
 {
     class ConnectionService
     {
-        // TODO: Вынести соединение в отдельный класс.
-        // TODO: Вынести кадр в отдельный класс.
-
-        /// <summary>
-        /// Тип кадра
-        /// </summary>
-        enum FrameType
-        {
-            /// Установка логического соединения.
-            Link,
-            /// Получение списка пользователей.
-            Ask,
-            /// Отправка сообщения пользователя.
-            Data,
-            /// Отправка запроса на переотправку сообщения.
-            Error,
-            /// Разъединение соединения.
-            Downlink
-        }
-
         private Connection currentConnection;
 
         /// <summary>
