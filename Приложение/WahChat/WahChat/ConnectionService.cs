@@ -11,6 +11,18 @@ namespace WahChat
 {
     class ConnectionService
     {
+        private ConnectionService()
+        {
+            // ..
+        }
+
+        private static readonly ConnectionService _sharedService = new ConnectionService();
+
+        public static ConnectionService GetSharedService()
+        {
+            return _sharedService;
+        }
+
         private Connection currentConnection;
 
         /// <summary>
@@ -39,6 +51,14 @@ namespace WahChat
         public void HandleFrame()
         {
             // ..
+        }
+
+        /// <summary>
+        /// Список доступных портов
+        /// </summary>
+        public string[] GetPortsNames()
+        {
+            return SerialPort.GetPortNames();
         }
     }
 }
