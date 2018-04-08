@@ -65,6 +65,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connection.cs" />
+    <Compile Include="ConnectionService.cs" />
+    <Compile Include="Frame.cs" />
     <Compile Include="Setup.cs">
       <SubType>Form</SubType>
     </Compile>

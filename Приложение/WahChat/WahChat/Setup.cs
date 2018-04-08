@@ -17,9 +17,15 @@ namespace WahChat
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Setup_Load(object sender, EventArgs e)
         {
-
+            // Показываем список COM-портов.
+            string[] portNames = ConnectionService.GetSharedService().GetPortsNames();
+            foreach (string portName in portNames)
+            {
+                incomePortBox.Items.Add(portName);
+                outcomePortBox.Items.Add(portName);
+            }
         }
     }
 }
