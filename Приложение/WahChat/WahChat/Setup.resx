@@ -128,13 +128,8 @@
   <data name="incomePortBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
-<<<<<<< HEAD
   <data name="incomePortBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>261, 45</value>
-=======
-  <data name="comboBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 28</value>
->>>>>>> authorizaation
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="incomePortBox.TabIndex" type="System.Int32, mscorlib">
@@ -161,13 +156,8 @@
   <data name="outcomePortBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
-<<<<<<< HEAD
   <data name="outcomePortBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>261, 45</value>
-=======
-  <data name="comboBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 28</value>
->>>>>>> authorizaation
   </data>
   <data name="outcomePortBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -197,7 +187,7 @@
     <value>4, 0, 4, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 18</value>
+    <value>301, 33</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -230,7 +220,7 @@
     <value>4, 0, 4, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 18</value>
+    <value>318, 33</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -250,7 +240,6 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-<<<<<<< HEAD
   <data name="connectButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -276,33 +265,6 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;connectButton.ZOrder" xml:space="preserve">
-=======
-  <data name="connect.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="connect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>43, 216</value>
-  </data>
-  <data name="connect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>591, 68</value>
-  </data>
-  <data name="connect.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="connect.Text" xml:space="preserve">
-    <value>Начать соединение</value>
-  </data>
-  <data name="&gt;&gt;connect.Name" xml:space="preserve">
-    <value>connect</value>
-  </data>
-  <data name="&gt;&gt;connect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;connect.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;connect.ZOrder" xml:space="preserve">
->>>>>>> authorizaation
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

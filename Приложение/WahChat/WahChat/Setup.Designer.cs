@@ -33,11 +33,7 @@
             this.outcomePortBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-<<<<<<< HEAD
             this.connectButton = new System.Windows.Forms.Button();
-=======
-            this.connect = new System.Windows.Forms.Button();
->>>>>>> authorizaation
             this.SuspendLayout();
             // 
             // incomePortBox
@@ -66,33 +62,19 @@
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-<<<<<<< HEAD
             // connectButton
             // 
             this.connectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(112)))), ((int)(((byte)(129)))));
             resources.ApplyResources(this.connectButton, "connectButton");
             this.connectButton.Name = "connectButton";
             this.connectButton.UseVisualStyleBackColor = false;
-=======
-            // connect
-            // 
-            this.connect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(112)))), ((int)(((byte)(129)))));
-            resources.ApplyResources(this.connect, "connect");
-            this.connect.Name = "connect";
-            this.connect.UseVisualStyleBackColor = false;
-            this.connect.Click += new System.EventHandler(this.connect_Click);
->>>>>>> authorizaation
             // 
             // Setup
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(35)))), ((int)(((byte)(51)))));
             resources.ApplyResources(this, "$this");
-<<<<<<< HEAD
             this.Controls.Add(this.connectButton);
-=======
-            this.Controls.Add(this.connect);
->>>>>>> authorizaation
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.outcomePortBox);
@@ -112,11 +94,7 @@
         private System.Windows.Forms.ComboBox outcomePortBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-<<<<<<< HEAD
         private System.Windows.Forms.Button connectButton;
-=======
-        private System.Windows.Forms.Button connect;
->>>>>>> authorizaation
     }
 }
 
