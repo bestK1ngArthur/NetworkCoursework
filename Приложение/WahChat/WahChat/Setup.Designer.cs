@@ -68,6 +68,7 @@
             resources.ApplyResources(this.connectButton, "connectButton");
             this.connectButton.Name = "connectButton";
             this.connectButton.UseVisualStyleBackColor = false;
+            this.connectButton.Click += new System.EventHandler(this.connectButton_Click);
             // 
             // Setup
             // 

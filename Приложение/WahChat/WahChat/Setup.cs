@@ -27,5 +27,32 @@ namespace WahChat
                 outcomePortBox.Items.Add(portName);
             }
         }
+
+        private void connectButton_Click(object sender, EventArgs e)
+        {
+            // Проверяем, выставлены ли порты.
+            if ((incomePortBox.SelectedItem != null) && (outcomePortBox.SelectedItem != null))
+            {
+
+                string incomePort = incomePortBox.SelectedItem.ToString();
+                string outcomePort = outcomePortBox.SelectedItem.ToString();
+
+                // Если порты одинаковые, то показываем ошибку.
+                if (incomePort == outcomePort)
+                {
+                    MessageBox.Show("Выберите различные COM-порты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
+                // Стартуем соединение.
+                ConnectionService.GetSharedService().CreateConnection(incomePortBox.SelectedText, outcomePortBox.SelectedText);
+
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Оба COM-порта должны быть выбраны", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
     }
 }
