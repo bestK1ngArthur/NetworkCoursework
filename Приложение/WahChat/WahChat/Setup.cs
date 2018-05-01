@@ -47,7 +47,10 @@ namespace WahChat
                 // Стартуем соединение.
                 ConnectionService.GetSharedService().CreateConnection(incomePort, outcomePort);
 
-                this.Close();
+                this.Hide();
+
+                Login loginForm = new Login();
+                loginForm.Show();
             }
             else
             {
