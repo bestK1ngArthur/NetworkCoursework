@@ -45,7 +45,7 @@ namespace WahChat
                 }
 
                 // Стартуем соединение.
-                ConnectionService.GetSharedService().CreateConnection(incomePortBox.SelectedText, outcomePortBox.SelectedText);
+                ConnectionService.GetSharedService().CreateConnection(incomePort, outcomePort);
 
                 this.Close();
             }
