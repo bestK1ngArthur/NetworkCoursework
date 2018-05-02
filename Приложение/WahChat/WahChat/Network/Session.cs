@@ -8,5 +8,11 @@ namespace WahChat
 {
     class Session
     {
+        private string username;
+
+        public Session(string username)
+        {
+            this.username = username;
+        }
     }
 }

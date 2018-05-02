@@ -23,6 +23,7 @@ namespace WahChat
             return _sharedService;
         }
 
+        /// Текущее соединение
         private Connection currentConnection;
 
         /// <summary>
@@ -61,15 +62,26 @@ namespace WahChat
             return SerialPort.GetPortNames();
         }
 
+        /// Текущая сессия
+        private Session currentSession;
+
         /// <summary>
         /// Создание сессии
         /// </summary>
         public void CreateSession(string username)
         {
-            this.currentConnection = new Connection(incomePortName, outcomePortName);
+            this.currentSession = new Session(username);
 
-            // формирование LINK кадра..
-            // отправка LINK кадра..
+            // формирование кадра c username..
+            // отправка кадра c username..
+        }
+
+        /// <summary>
+        /// Закрытие сессии
+        /// </summary>
+        public void CloseSession()
+        {
+            // ..
         }
     }
 }

@@ -65,30 +65,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connection.cs" />
-    <Compile Include="ConnectionService.cs" />
-    <Compile Include="Frame.cs" />
-    <Compile Include="Login.cs">
+    <Compile Include="Network\Connection.cs" />
+    <Compile Include="Network\NetworkService.cs" />
+    <Compile Include="Network\Frame.cs" />
+    <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="Forms\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Setup.cs">
+    <Compile Include="Network\Session.cs" />
+    <Compile Include="Forms\Setup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Setup.Designer.cs">
+    <Compile Include="Forms\Setup.Designer.cs">
       <DependentUpon>Setup.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Setup.dje-NE.resx">
+    <EmbeddedResource Include="Forms\Setup.dje-NE.resx">
       <DependentUpon>Setup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Setup.resx">
+    <EmbeddedResource Include="Forms\Setup.resx">
       <DependentUpon>Setup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
