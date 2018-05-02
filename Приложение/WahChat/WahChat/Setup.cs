@@ -20,7 +20,7 @@ namespace WahChat
         private void Setup_Load(object sender, EventArgs e)
         {
             // Показываем список COM-портов.
-            string[] portNames = ConnectionService.GetSharedService().GetPortsNames();
+            string[] portNames = NetworkService.GetSharedService().GetPortsNames();
             foreach (string portName in portNames)
             {
                 incomePortBox.Items.Add(portName);
@@ -45,7 +45,7 @@ namespace WahChat
                 }
 
                 // Стартуем соединение.
-                ConnectionService.GetSharedService().CreateConnection(incomePort, outcomePort);
+                NetworkService.GetSharedService().CreateConnection(incomePort, outcomePort);
 
                 this.Hide();
 

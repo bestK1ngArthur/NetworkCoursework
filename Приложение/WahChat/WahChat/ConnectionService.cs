@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace WahChat
 {
-    class ConnectionService
+    class NetworkService
     {
-        private ConnectionService()
+        private NetworkService()
         {
             // ..
         }
 
-        private static readonly ConnectionService _sharedService = new ConnectionService();
+        private static readonly NetworkService _sharedService = new NetworkService();
 
-        public static ConnectionService GetSharedService()
+        public static NetworkService GetSharedService()
         {
             return _sharedService;
         }
@@ -26,7 +26,7 @@ namespace WahChat
         private Connection currentConnection;
 
         /// <summary>
-        /// Создание соединения соединения
+        /// Создание соединения
         /// </summary>
         public void CreateConnection(string incomePortName, string outcomePortName)
         {
@@ -59,6 +59,17 @@ namespace WahChat
         public string[] GetPortsNames()
         {
             return SerialPort.GetPortNames();
+        }
+
+        /// <summary>
+        /// Создание сессии
+        /// </summary>
+        public void CreateSession(string username)
+        {
+            this.currentConnection = new Connection(incomePortName, outcomePortName);
+
+            // формирование LINK кадра..
+            // отправка LINK кадра..
         }
     }
 }
