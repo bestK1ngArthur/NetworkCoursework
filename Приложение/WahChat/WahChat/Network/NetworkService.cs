@@ -24,7 +24,7 @@ namespace WahChat
         }
 
         /// Текущее соединение
-        private Connection currentConnection;
+        public Connection currentConnection;
 
         /// <summary>
         /// Создание соединения

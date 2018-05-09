@@ -15,6 +15,15 @@ namespace WahChat
         public Login()
         {
             InitializeComponent();
+
+            if (NetworkService.GetSharedService().currentConnection.isPortsOpened)
+            {
+                this.notificationLabel.Text = "Порты открыты";
+            }
+            else
+            {
+                this.notificationLabel.Text = "Ошибка открытия портов";
+            }
         }
 
         private void loginButton_Click(object sender, EventArgs e)

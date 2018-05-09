@@ -30,6 +30,7 @@
         {
             this.loginButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.notificationLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // loginButton
@@ -56,12 +57,24 @@
             this.textBox1.Size = new System.Drawing.Size(591, 40);
             this.textBox1.TabIndex = 6;
             // 
+            // notificationLabel
+            // 
+            this.notificationLabel.AutoSize = true;
+            this.notificationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.notificationLabel.ForeColor = System.Drawing.Color.White;
+            this.notificationLabel.Location = new System.Drawing.Point(36, 362);
+            this.notificationLabel.Name = "notificationLabel";
+            this.notificationLabel.Size = new System.Drawing.Size(26, 39);
+            this.notificationLabel.TabIndex = 7;
+            this.notificationLabel.Text = " ";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(35)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(673, 434);
+            this.Controls.Add(this.notificationLabel);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.loginButton);
             this.Name = "Login";
@@ -76,5 +89,6 @@
 
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label notificationLabel;
     }
 }
