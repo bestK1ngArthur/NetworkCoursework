@@ -31,6 +31,7 @@
             this.loginButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.notificationLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // loginButton
@@ -60,13 +61,24 @@
             // notificationLabel
             // 
             this.notificationLabel.AutoSize = true;
-            this.notificationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.notificationLabel.ForeColor = System.Drawing.Color.White;
-            this.notificationLabel.Location = new System.Drawing.Point(36, 362);
+            this.notificationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.notificationLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.notificationLabel.Location = new System.Drawing.Point(51, 358);
             this.notificationLabel.Name = "notificationLabel";
-            this.notificationLabel.Size = new System.Drawing.Size(26, 39);
+            this.notificationLabel.Size = new System.Drawing.Size(26, 37);
             this.notificationLabel.TabIndex = 7;
             this.notificationLabel.Text = " ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label1.Location = new System.Drawing.Point(36, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 39);
+            this.label1.TabIndex = 8;
+            this.label1.Text = " Имя";
             // 
             // Login
             // 
@@ -74,6 +86,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(35)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(673, 434);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.notificationLabel);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.loginButton);
@@ -90,5 +103,6 @@
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label notificationLabel;
+        private System.Windows.Forms.Label label1;
     }
 }
