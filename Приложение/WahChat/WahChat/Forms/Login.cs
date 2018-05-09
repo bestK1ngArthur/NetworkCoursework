@@ -28,7 +28,18 @@ namespace WahChat
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            string str = "ffuuucckk";
+            List<byte> data = new List<byte>();
+
+            byte[] arr = new byte[str.Length * sizeof(char)];
+            System.Buffer.BlockCopy(str.ToCharArray(), 0, arr, 0, arr.Length);
+            data.AddRange(arr);
+
+            NetworkService.GetSharedService().currentConnection.SendBytes(data);
+
+            this.notificationLabel.Text = "Отправил парашу";
+
+            //this.Close();
         }
     }
 }

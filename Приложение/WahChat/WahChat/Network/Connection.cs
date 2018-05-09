@@ -38,6 +38,8 @@ namespace WahChat
             this.incomePort.Handshake = Handshake.RequestToSend;
             this.incomePort.BaudRate = 9600;
             this.incomePort.ReadBufferSize = 4 * 1024; // TODO: Надо пересчитать размер буфера.
+            this.incomePort.DataReceived += new SerialDataReceivedEventHandler(RecieveBytes);
+
             this.outcomePort.Parity = Parity.Even;
             this.outcomePort.Handshake = Handshake.RequestToSend;
             this.outcomePort.BaudRate = 9600;
@@ -65,9 +67,9 @@ namespace WahChat
         /// <summary>
         /// Пересылка байтов
         /// </summary>
-        private void SendBytes(List<byte> list)
+        public void SendBytes(List<byte> list)
         {
-            // Кодирование
+            // TODO: Кодирование
             List<byte> hamm = list; //Hamming.To(list);
 
             // Делаем так, чтобы внутри кадра не встречалось boundByte.
@@ -85,8 +87,9 @@ namespace WahChat
                 }
             }
 
-            safeList.Insert(0, boundByte); // start byte
-            safeList.Add(boundByte); // end byte
+            // Добавляем стартовый и конечный байт
+            safeList.Insert(0, boundByte);
+            safeList.Add(boundByte);
 
             if (this.outcomePort.WriteBufferSize - this.outcomePort.BytesToWrite < safeList.Count)
             {
@@ -97,6 +100,15 @@ namespace WahChat
 
             byte[] arr = safeList.ToArray();
             this.outcomePort.Write(arr, 0, arr.Length);
+        }
+
+        /// <summary>
+        /// Получение байтов
+        /// </summary>
+        public void RecieveBytes(object sender, SerialDataReceivedEventArgs e)
+        {
+            // (byte)comPort.ReadByte()
+            return;
         }
     }
 }
