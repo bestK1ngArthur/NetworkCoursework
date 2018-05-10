@@ -16,6 +16,11 @@ namespace WahChat
         {
             InitializeComponent();
 
+            NetworkService.GetSharedService().notificationLabel = this.notificationLabel;
+            NetworkService.GetSharedService().connectButton = this.loginButton;
+
+            this.loginButton.Text = "Подключиться";
+
             if (NetworkService.GetSharedService().currentConnection.isPortsOpened)
             {
                 this.notificationLabel.Text = "Порты открыты";
@@ -31,8 +36,7 @@ namespace WahChat
             int username = int.Parse(textBox.Text);
             NetworkService.GetSharedService().CreateSession(username);
 
-            byte boundByte = 0xFF;
-
+            /*
             string str = "ffuuucckk";
             byte[] byteStr = System.Text.Encoding.UTF8.GetBytes(str);
 
@@ -49,19 +53,9 @@ namespace WahChat
             }
 
             data.Add(boundByte);
+            */
 
-
-            //byte[] arr = new byte[str.Length * sizeof(char)];
-            //System.Buffer.BlockCopy(str.ToCharArray(), 0, arr, 0, arr.Length);
-            //data.AddRange(arr);
-
-            //byte boundByte = 0xFF;
-            //arr[0] = boundByte;
-            //arr[8] = boundByte;
-
-            Frame frame = new Frame();
-            frame.data = data;
-
+            Frame frame = new Frame(Frame.Type.Link);
             NetworkService.GetSharedService().SendFrame(frame);
 
             this.notificationLabel.Text = "Отправил парашу";

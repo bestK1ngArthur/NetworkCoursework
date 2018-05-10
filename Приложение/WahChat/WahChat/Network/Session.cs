@@ -8,7 +8,7 @@ namespace WahChat
 {
     class Session
     {
-        private int username;
+        public int username;
 
         public Session(int username)
         {

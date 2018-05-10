@@ -17,11 +17,13 @@ namespace WahChat
         private SerialPort incomePort;
         private SerialPort outcomePort;
 
+        public bool isMaster;
+
         private List<byte> bytesBuffer = new List<byte>();
 
-        public Connection(string incomePortName, string outcomePortName)
+        public Connection(string incomePortName, string outcomePortName, bool isMaster)
         {
-            this.isPortsOpened = OpenPorts(incomePortName, outcomePortName);
+            this.isPortsOpened = OpenPorts(incomePortName, outcomePortName, isMaster);
 
             // ..
         }
@@ -29,11 +31,13 @@ namespace WahChat
         /// <summary>
         /// Открытие портов
         /// </summary>
-        private bool OpenPorts(string incomePortName, string outcomePortName)
+        private bool OpenPorts(string incomePortName, string outcomePortName, bool isMaster)
         {
             // Создаем объекты портов.
             this.incomePort = new SerialPort(incomePortName);
             this.outcomePort = new SerialPort(outcomePortName);
+
+            this.isMaster = isMaster;
 
             // Настраиваем порты.
             this.incomePort.Parity = Parity.Even;
@@ -78,15 +82,15 @@ namespace WahChat
             List<byte> safeList = new List<byte>(hamm.Count);
             foreach (var b in hamm)
             {
-                //if ((b & 0x7F) == 0x7F)
-                //{
-                //    safeList.Add(0x7F);
-                //    safeList.Add((byte)(b & 0x80));
-                //}
-                //else
-                //{
+                if ((b & 0x7F) == 0x7F)
+                {
+                    safeList.Add(0x7F);
+                    safeList.Add((byte)(b & 0x80));
+                }
+                else
+                {
                     safeList.Add(b);
-                //}
+                }
             }
 
             // Добавляем стартовый и конечный байт

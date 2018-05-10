@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.connectButton = new System.Windows.Forms.Button();
+            this.checkBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // incomePortBox
@@ -70,11 +71,18 @@
             this.connectButton.UseVisualStyleBackColor = false;
             this.connectButton.Click += new System.EventHandler(this.connectButton_Click);
             // 
+            // checkBox
+            // 
+            resources.ApplyResources(this.checkBox, "checkBox");
+            this.checkBox.Name = "checkBox";
+            this.checkBox.UseVisualStyleBackColor = true;
+            // 
             // Setup
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(35)))), ((int)(((byte)(51)))));
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.checkBox);
             this.Controls.Add(this.connectButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -96,6 +104,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button connectButton;
+        private System.Windows.Forms.CheckBox checkBox;
     }
 }
 

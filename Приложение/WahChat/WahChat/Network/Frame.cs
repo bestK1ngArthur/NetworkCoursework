@@ -80,5 +80,12 @@ namespace WahChat
             }
 
         }
+
+        public Frame(Type type)
+        {
+            List<byte> data = new List<byte>();
+            data.Add((byte)type);
+            this.data = data;
+        }
     }
 }

@@ -6,11 +6,15 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WahChat
 {
     class NetworkService
     {
+        public Label notificationLabel;
+        public Button connectButton;
+
         private NetworkService()
         {
             // ..
@@ -26,12 +30,15 @@ namespace WahChat
         /// Текущее соединение
         public Connection currentConnection;
 
+        /// Текущая сессия
+        public Session currentSession;
+
         /// <summary>
         /// Создание соединения
         /// </summary>
-        public void CreateConnection(string incomePortName, string outcomePortName)
+        public void CreateConnection(string incomePortName, string outcomePortName, bool isMaster)
         {
-            this.currentConnection = new Connection(incomePortName, outcomePortName);
+            this.currentConnection = new Connection(incomePortName, outcomePortName, isMaster);
 
             // формирование LINK кадра..
             // отправка LINK кадра..
@@ -68,18 +75,60 @@ namespace WahChat
             switch (frame.type)
             {
                 case Frame.Type.Link:
+
+                    this.notificationLabel.Invoke((MethodInvoker)delegate {
+
+                        // Running on the UI thread
+                        this.notificationLabel.Text = "Соединение установлено";
+                        this.connectButton.Text = "Войти";
+                    });
+
+                    // Если станция не ведущая, то отправляем дальше
+                    if (currentConnection.isMaster == false)
+                    {
+                        this.SendFrame(frame);
+                    }
+
                     break;
 
                 case Frame.Type.Ask:
+
+                    // Если станция не ведущая, то отправляем дальше
+                    if (currentConnection.isMaster == false)
+                    {
+                        this.SendFrame(frame);
+                    }
+
                     break;
 
                 case Frame.Type.Data:
+
+                    // Если станция не ялвяется отправителем, то отправляем дальше
+                    if (currentSession.username != frame.authorID)
+                    {
+                        this.SendFrame(frame);
+                    }
+
                     break;
 
                 case Frame.Type.Error:
+
+                    // Если станция не ведущая, то отправляем дальше
+                    if (currentConnection.isMaster == false)
+                    {
+                        this.SendFrame(frame);
+                    }
+
                     break;
 
                 case Frame.Type.Downlink:
+
+                    // Если станция не ведущая, то отправляем дальше
+                    if (currentConnection.isMaster == false)
+                    {
+                        this.SendFrame(frame);
+                    }
+
                     break;
             }
         }
@@ -96,9 +145,6 @@ namespace WahChat
         {
             return SerialPort.GetPortNames();
         }
-
-        /// Текущая сессия
-        private Session currentSession;
 
         /// <summary>
         /// Создание сессии
