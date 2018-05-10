@@ -8,9 +8,9 @@ namespace WahChat
 {
     class Session
     {
-        private string username;
+        private int username;
 
-        public Session(string username)
+        public Session(int username)
         {
             this.username = username;
         }

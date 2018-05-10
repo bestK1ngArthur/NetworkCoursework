@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.loginButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox = new System.Windows.Forms.TextBox();
             this.notificationLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -49,14 +49,14 @@
             this.loginButton.UseVisualStyleBackColor = false;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
-            // textBox1
+            // textBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.85F, System.Drawing.FontStyle.Bold);
-            this.textBox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBox1.Location = new System.Drawing.Point(43, 131);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(591, 40);
-            this.textBox1.TabIndex = 6;
+            this.textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.85F, System.Drawing.FontStyle.Bold);
+            this.textBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBox.Location = new System.Drawing.Point(43, 131);
+            this.textBox.Name = "textBox";
+            this.textBox.Size = new System.Drawing.Size(591, 40);
+            this.textBox.TabIndex = 6;
             // 
             // notificationLabel
             // 
@@ -88,7 +88,7 @@
             this.ClientSize = new System.Drawing.Size(673, 434);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.notificationLabel);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox);
             this.Controls.Add(this.loginButton);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -101,7 +101,7 @@
         #endregion
 
         private System.Windows.Forms.Button loginButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Label notificationLabel;
         private System.Windows.Forms.Label label1;
     }

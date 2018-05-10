@@ -17,6 +17,8 @@ namespace WahChat
         private SerialPort incomePort;
         private SerialPort outcomePort;
 
+        private List<byte> bytesBuffer = new List<byte>();
+
         public Connection(string incomePortName, string outcomePortName)
         {
             this.isPortsOpened = OpenPorts(incomePortName, outcomePortName);
@@ -37,13 +39,13 @@ namespace WahChat
             this.incomePort.Parity = Parity.Even;
             this.incomePort.Handshake = Handshake.RequestToSend;
             this.incomePort.BaudRate = 9600;
-            this.incomePort.ReadBufferSize = 4 * 1024; // TODO: Надо пересчитать размер буфера.
+            //this.incomePort.ReadBufferSize = 4 * 1024; // TODO: Надо пересчитать размер буфера.
             this.incomePort.DataReceived += new SerialDataReceivedEventHandler(RecieveBytes);
 
             this.outcomePort.Parity = Parity.Even;
             this.outcomePort.Handshake = Handshake.RequestToSend;
             this.outcomePort.BaudRate = 9600;
-            this.outcomePort.ReadBufferSize = 4 * 1024; // TODO: Надо пересчитать размер буфера.
+            //this.outcomePort.ReadBufferSize = 4 * 1024; // TODO: Надо пересчитать размер буфера.
 
             // Открываем порты.
             this.incomePort.Open();
@@ -76,15 +78,15 @@ namespace WahChat
             List<byte> safeList = new List<byte>(hamm.Count);
             foreach (var b in hamm)
             {
-                if ((b & 0x7F) == 0x7F)
-                {
-                    safeList.Add(0x7F);
-                    safeList.Add((byte)(b & 0x80));
-                }
-                else
-                {
+                //if ((b & 0x7F) == 0x7F)
+                //{
+                //    safeList.Add(0x7F);
+                //    safeList.Add((byte)(b & 0x80));
+                //}
+                //else
+                //{
                     safeList.Add(b);
-                }
+                //}
             }
 
             // Добавляем стартовый и конечный байт
@@ -107,8 +109,50 @@ namespace WahChat
         /// </summary>
         public void RecieveBytes(object sender, SerialDataReceivedEventArgs e)
         {
-            // (byte)comPort.ReadByte()
-            return;
+            int bytes = incomePort.BytesToRead;
+            byte[] comBuffer = new byte[bytes];
+
+            // Записываем в массив данные от ком порта.
+            incomePort.Read(comBuffer, 0, bytes);
+
+            foreach (byte incomeByte in comBuffer)
+            {
+                if (incomeByte == boundByte)
+                {
+                    if (this.bytesBuffer.Count > 0)
+                    {
+                        NetworkService.GetSharedService().HandleMessage(this.bytesBuffer);
+                    }
+
+                    this.bytesBuffer = new List<byte>();
+                }
+                else
+                {
+                    this.bytesBuffer.Add(incomeByte);
+                }
+            }
+
+            //<byte> list = comBuffer.OfType<byte>().ToList();
+            //NetworkService.GetSharedService().HandleMessage(list);
+
+            /*
+            byte incomeByte = (byte)incomePort.ReadByte();
+            if (incomeByte == boundByte)
+            {
+                if (this.bytesBuffer.Count > 0) {
+                    NetworkService.GetSharedService().HandleMessage(this.bytesBuffer);
+                }
+
+                this.bytesBuffer = new List<byte>();
+            }
+            else
+            {
+                this.bytesBuffer.Add(incomeByte);
+            }
+            */
+
+            //Console.WriteLine(comBuffer);
+            //(byte)comPort.ReadByte()
         }
     }
 }

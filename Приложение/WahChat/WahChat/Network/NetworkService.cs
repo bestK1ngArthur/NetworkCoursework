@@ -47,11 +47,46 @@ namespace WahChat
         }
 
         /// <summary>
+        /// Обработка пришедшего сообщения
+        /// </summary>
+        public void HandleMessage(List<byte> message)
+        {
+            //byte[] messageData = message.ToArray();
+            //string s = System.Text.Encoding.UTF8.GetString(messageData, 0, messageData.Length);
+
+            Frame frame = new Frame(message);
+            this.HandleFrame(frame);
+
+            return;
+        }
+
+        /// <summary>
         /// Обработка пришедшего кадра
         /// </summary>
-        public void HandleFrame()
+        public void HandleFrame(Frame frame)
         {
-            // ..
+            switch (frame.type)
+            {
+                case Frame.Type.Link:
+                    break;
+
+                case Frame.Type.Ask:
+                    break;
+
+                case Frame.Type.Data:
+                    break;
+
+                case Frame.Type.Error:
+                    break;
+
+                case Frame.Type.Downlink:
+                    break;
+            }
+        }
+
+        public void SendFrame(Frame frame)
+        {
+            this.currentConnection.SendBytes(frame.data);
         }
 
         /// <summary>
@@ -68,7 +103,7 @@ namespace WahChat
         /// <summary>
         /// Создание сессии
         /// </summary>
-        public void CreateSession(string username)
+        public void CreateSession(int username)
         {
             this.currentSession = new Session(username);
 

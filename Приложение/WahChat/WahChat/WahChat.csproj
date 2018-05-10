@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Network\Connection.cs" />
+    <Compile Include="Network\CycleCoder.cs" />
     <Compile Include="Network\NetworkService.cs" />
     <Compile Include="Network\Frame.cs" />
     <Compile Include="Forms\Login.cs">
