@@ -11,3 +11,4 @@ C:\Users\Arthur K1ng\Desktop\NetworkCoursework\Приложение\WahChat\WahC
 C:\Users\Arthur K1ng\Desktop\NetworkCoursework\Приложение\WahChat\WahChat\obj\Debug\WahChat.Setup.dje-NE.resources
 C:\Users\Arthur K1ng\Desktop\NetworkCoursework\Приложение\WahChat\WahChat\obj\Debug\dje-NE\WahChat.resources.dll
 C:\Users\Arthur K1ng\Desktop\NetworkCoursework\Приложение\WahChat\WahChat\obj\Debug\WahChat.Login.resources
+C:\Users\Arthur K1ng\Desktop\NetworkCoursework\Приложение\WahChat\WahChat\obj\Debug\WahChat.Chat.resources

@@ -91,7 +91,6 @@
             this.Controls.Add(this.textBox);
             this.Controls.Add(this.loginButton);
             this.Name = "Login";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
             this.ResumeLayout(false);
             this.PerformLayout();

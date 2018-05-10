@@ -14,6 +14,7 @@ namespace WahChat
     {
         public Label notificationLabel;
         public Button connectButton;
+        public ListBox chatBox;
 
         private NetworkService()
         {
@@ -49,8 +50,8 @@ namespace WahChat
         /// </summary>
         public void CloseConnection()
         {
-            // формирование DOWNLINK кадра..
-            // отправка DOWNLINK кадра..
+            Frame frame = new Frame(Frame.Type.Downlink);
+            this.SendFrame(frame);
         }
 
         /// <summary>
@@ -58,13 +59,8 @@ namespace WahChat
         /// </summary>
         public void HandleMessage(List<byte> message)
         {
-            //byte[] messageData = message.ToArray();
-            //string s = System.Text.Encoding.UTF8.GetString(messageData, 0, messageData.Length);
-
             Frame frame = new Frame(message);
             this.HandleFrame(frame);
-
-            return;
         }
 
         /// <summary>
@@ -103,6 +99,12 @@ namespace WahChat
 
                 case Frame.Type.Data:
 
+                    this.chatBox.Invoke((MethodInvoker)delegate {
+
+                        // Running on the UI thread
+                        this.chatBox.Items.Add(string.Format("{0} ({1}) {2}", DateTime.Now.ToString("hh:mm"), frame.authorID, frame.message));
+                    });
+
                     // Если станция не ялвяется отправителем, то отправляем дальше
                     if (currentSession.username != frame.authorID)
                     {
@@ -129,6 +131,8 @@ namespace WahChat
                         this.SendFrame(frame);
                     }
 
+                    System.Windows.Forms.Application.Exit();
+
                     break;
             }
         }
@@ -136,6 +140,26 @@ namespace WahChat
         public void SendFrame(Frame frame)
         {
             this.currentConnection.SendBytes(frame.data);
+        }
+
+        public void SendMessage(string message)
+        {
+            byte[] byteStr = System.Text.Encoding.UTF8.GetBytes(message);
+
+            List<byte> data = new List<byte>();
+
+            data.Add((byte)Frame.Type.Data);
+            data.Add((byte)currentSession.username);
+
+            foreach (byte b in byteStr)
+            {
+                data.Add(b);
+            }
+
+            Frame frame = new Frame();
+            frame.data = data;
+
+            this.SendFrame(frame);
         }
 
         /// <summary>

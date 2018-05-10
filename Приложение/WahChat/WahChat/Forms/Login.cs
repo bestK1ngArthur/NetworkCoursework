@@ -36,31 +36,15 @@ namespace WahChat
             int username = int.Parse(textBox.Text);
             NetworkService.GetSharedService().CreateSession(username);
 
-            /*
-            string str = "ffuuucckk";
-            byte[] byteStr = System.Text.Encoding.UTF8.GetBytes(str);
-
-            List<byte> data = new List<byte>();
-
-            data.Add(boundByte);
-
-            data.Add((byte)Frame.Type.Data);
-            data.Add((byte)username);
-
-            foreach (byte b in byteStr)
-            {
-                data.Add(b);
-            }
-
-            data.Add(boundByte);
-            */
-
             Frame frame = new Frame(Frame.Type.Link);
             NetworkService.GetSharedService().SendFrame(frame);
 
-            this.notificationLabel.Text = "Отправил парашу";
+            this.notificationLabel.Text = "Отправка..";
 
-            //this.Close();
+            this.Hide();
+
+            Chat chatForm = new Chat();
+            chatForm.Show();
         }
     }
 }
