@@ -49,7 +49,6 @@ namespace WahChat
             this.outcomePort.Parity = Parity.Even;
             this.outcomePort.Handshake = Handshake.RequestToSend;
             this.outcomePort.BaudRate = 9600;
-            //this.outcomePort.ReadBufferSize = 4 * 1024; // TODO: Надо пересчитать размер буфера.
 
             // Открываем порты.
             this.incomePort.Open();
@@ -76,7 +75,7 @@ namespace WahChat
         public void SendBytes(List<byte> list)
         {
             // TODO: Кодирование
-            List<byte> hamm = list; //Hamming.To(list);
+            List<byte> hamm = list;
 
             // Делаем так, чтобы внутри кадра не встречалось boundByte.
             List<byte> safeList = new List<byte>(hamm.Count);
@@ -135,28 +134,6 @@ namespace WahChat
                     this.bytesBuffer.Add(incomeByte);
                 }
             }
-
-            //<byte> list = comBuffer.OfType<byte>().ToList();
-            //NetworkService.GetSharedService().HandleMessage(list);
-
-            /*
-            byte incomeByte = (byte)incomePort.ReadByte();
-            if (incomeByte == boundByte)
-            {
-                if (this.bytesBuffer.Count > 0) {
-                    NetworkService.GetSharedService().HandleMessage(this.bytesBuffer);
-                }
-
-                this.bytesBuffer = new List<byte>();
-            }
-            else
-            {
-                this.bytesBuffer.Add(incomeByte);
-            }
-            */
-
-            //Console.WriteLine(comBuffer);
-            //(byte)comPort.ReadByte()
         }
     }
 }
